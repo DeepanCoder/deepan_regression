@@ -7,7 +7,7 @@ setup(
     long_secription=open('README.md').read(),
     author = "Deepan Kumar S",
     author_email = "deepankumar2602@gmail.com",
-    url="https://github.com/DeepanCoder"
+    url="https://github.com/DeepanCoder/deepan_regression"
     packages=find_packages(),
     install_require=["openpyxl"],
     classifiers=[
