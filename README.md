@@ -21,33 +21,66 @@ To use this tool, install it via pip:
 
 ```sh
 pip3 install deepan_regression_tool
-Prerequisites
+```
+##Prerequisites
 Python >=3.9
 openpyxl
-Usage
+##Usage
 Importing the Module
 After installation, you can import the module as follows:
-
+```python
 from deepan_regression_tool import *
-Running Regression
+```
+##Running Regression
 To run the regression, use the run_regression function provided by the module.
 
-from deepan_regression_tool import *
+```python
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Managed Regression",
+        epilog=HELP_MESSAGE,
+        formatter_class=argparse.RawTextHelpFormatter
+    )
+    
+    parser.add_argument('--no_of_cores', '-no_of_cores', type=int, required=True, help="Number of cores to use for the regression.")
+    parser.add_argument('--pathsel_widths', '-pathsel_widths', type=int, nargs='+', required=True, help="Widths for path selection.")
+    parser.add_argument('--delaysel_widths', '-delaysel_widths', type=int, nargs='+', required=True, help="Widths for delay selection.")
+    parser.add_argument('--json', '-json', type=str, required=True, help="Path to the JSON configuration file.")
 
-# Example usage
-deepan_regression_tool.run_regression(4, 'path/to/your/excel_file.xlsx', 'path/to/regression_dir')
-Function Descriptions
-run_regression(no_of_cores, xl_file_name, regression_dir_name)
-no_of_cores: Number of cores to be used for the regression.
-xl_file_name: Path to the Excel file containing the commands.
-regression_dir_name: Path to the directory where regression results should be stored.
-This function reads the commands from the specified Excel file, executes them, and logs the results.
+    if len(sys.argv) == 1:
+        parser.print_help(sys.stderr)
+        #print(HELP_MESSAGE)
+        sys.exit(1)
 
-Fair Use
+    args = parser.parse_args()
+
+    no_of_cores = args.no_of_cores
+    pathsel_widths = args.pathsel_widths
+    delaysel_widths = args.delaysel_widths
+    json_file_name = args.json
+    random_sel_values = [0,1]
+    funclk_freq = [1.0,2.0,3.0]
+
+    # Ensure the json argument is provided
+    if not args.json:
+        print("Error: --json argument is required")
+        print(HELP_MESSAGE)
+        sys.exit(1)
+
+    file = open("test.txt",'w')
+    file.close()
+    file = open("compile.txt",'w')
+    file.close()
+    file = open("log.txt",'w')
+    file.close()
+    xl_file_name,regression_dir_name = gen_xl(json_file_name,no_of_cores,pathsel_widths,delaysel_widths,funclk_freq,random_sel_values)
+    run_regression(no_of_cores,xl_file_name,regression_dir_name)
+    regression_analyze(no_of_cores,xl_file_name)
+
+```
+
+##Fair Use
 This tool is provided as-is under the GNU General Public License v3.0. You are free to use, modify, and distribute this tool, provided that you adhere to the terms of the license. For more details, visit: GNU GPL v3.0.
 
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
-
-Contact
+##Contact
 For questions or suggestions, please open an issue on the GitHub repository.
