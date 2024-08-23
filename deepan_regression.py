@@ -1,4 +1,5 @@
 
+
 import random
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
@@ -7,12 +8,11 @@ from datetime import datetime
 import subprocess
 import time
 import sys
-import argparse
 import shutil
 import glob
 import json
 
-def gen_xl_csh(json_file_name,no_of_cores,pathsel_widths,delaysel_widths,funclk_freq,random_sel_values):
+def gen_xl(json_file_name,no_of_cores,pathsel_widths,delaysel_widths,funclk_freq,random_sel_values):
     xl_file_base = "regression"
     xl_file_date = datetime.now().strftime('_%d_%m_%y')
     xl_file_time = datetime.now().strftime('_%H_%M_%S')
