@@ -31,7 +31,7 @@ After installation, you can import the module as follows:
 ```python
 from deepan_regression_tool import *
 ```
-##Running Regression
+## Running Regression
 To run the regression, use the run_regression function provided by the module.
 
 ```python
@@ -79,8 +79,8 @@ if __name__ == "__main__":
 
 ```
 
-##Fair Use
+## Fair Use
 This tool is provided as-is under the GNU General Public License v3.0. You are free to use, modify, and distribute this tool, provided that you adhere to the terms of the license. For more details, visit: GNU GPL v3.0.
 
-##Contact
+## Contact
 For questions or suggestions, please open an issue on the GitHub repository.
