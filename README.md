@@ -74,7 +74,7 @@ if __name__ == "__main__":
     file = open("log.txt",'w')
     file.close()
     xl_file_name,regression_dir_name = gen_xl(json_file_name,no_of_cores,pathsel_widths,delaysel_widths,funclk_freq,random_sel_values)
-    run_regression(no_of_cores,xl_file_name,regression_dir_name)
+    run_regression(no_of_cores,xl_file_name,regression_dir_name,timeout)
     regression_analyze(no_of_cores,xl_file_name)
 
 ```
