@@ -22,10 +22,12 @@ To use this tool, install it via pip:
 ```sh
 pip3 install deepan_regression_tool
 ```
-##Prerequisites
-Python >=3.9
-openpyxl
-##Usage
+## Prerequisites
+•	Python >=3.9
+•	openpyxl
+•	Linux operating system
+
+## Usage
 Importing the Module
 After installation, you can import the module as follows:
 ```python
