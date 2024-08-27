@@ -37,49 +37,22 @@ from deepan_regression_tool import *
 To run the regression, use the run_regression function provided by the module.
 
 ```python
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Managed Regression",
-        epilog=HELP_MESSAGE,
-        formatter_class=argparse.RawTextHelpFormatter
-    )
-    
-    parser.add_argument('--no_of_cores', '-no_of_cores', type=int, required=True, help="Number of cores to use for the regression.")
-    parser.add_argument('--pathsel_widths', '-pathsel_widths', type=int, nargs='+', required=True, help="Widths for path selection.")
-    parser.add_argument('--delaysel_widths', '-delaysel_widths', type=int, nargs='+', required=True, help="Widths for delay selection.")
-    parser.add_argument('--json', '-json', type=str, required=True, help="Path to the JSON configuration file.")
+import deepan_regression_tool
 
-    if len(sys.argv) == 1:
-        parser.print_help(sys.stderr)
-        #print(HELP_MESSAGE)
-        sys.exit(1)
+def check_results (input1, input2):
+    ...
+    ...
+    ...
+    return [flag, status]
 
-    args = parser.parse_args()
+deepan_regression_tool.check_results = check_results
 
-    no_of_cores = args.no_of_cores
-    pathsel_widths = args.pathsel_widths
-    delaysel_widths = args.delaysel_widths
-    json_file_name = args.json
-    random_sel_values = [0,1]
-    funclk_freq = [1.0,2.0,3.0]
+deepan_regression_tool.regression(json_file_name,number_of_iteratables,max_bit_widths1,max_bait_widths2,iteratable_freq,random_iteratable_values,timeout_for_run_command)
 
-    # Ensure the json argument is provided
-    if not args.json:
-        print("Error: --json argument is required")
-        print(HELP_MESSAGE)
-        sys.exit(1)
-
-    file = open("test.txt",'w')
-    file.close()
-    file = open("compile.txt",'w')
-    file.close()
-    file = open("log.txt",'w')
-    file.close()
-    xl_file_name,regression_dir_name = gen_xl(json_file_name,no_of_cores,pathsel_widths,delaysel_widths,funclk_freq,random_sel_values)
-    run_regression(no_of_cores,xl_file_name,regression_dir_name,timeout)
-    regression_analyze(no_of_cores,xl_file_name)
-
+help = deepan_regression_tool.HELP_MESSAGE
 ```
+flag can take boolean values - True,Flase
+status can take string values - PASS,FAIL,terminate,try_again,clean_db_try_again
 
 ## Fair Use
 This tool is provided as-is under the GNU General Public License v3.0. You are free to use, modify, and distribute this tool, provided that you adhere to the terms of the license. For more details, visit: GNU GPL v3.0.
