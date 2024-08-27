@@ -31,7 +31,7 @@ pip3 install deepan_regression_tool
 Importing the Module
 After installation, you can import the module as follows:
 ```python
-from deepan_regression_tool import *
+import deepan_regression_tool
 ```
 ## Running Regression
 To run the regression, use the run_regression function provided by the module.
